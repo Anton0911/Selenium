@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class orderingCardValidationsTest {
     private static WebDriver driver;
+
     @BeforeAll
     static void setUpAll() {
 // убедитесь, что файл chromedriver.exe расположен именно в каталоге C:\tmp
@@ -24,15 +25,18 @@ public class orderingCardValidationsTest {
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
     }
+
     @BeforeEach
     void setUp() {
         driver = new ChromeDriver();
     }
+
     @AfterEach
     void tearDown() {
         driver.quit();
         driver = null;
     }
+
     @Test
     void shouldTestSomething() {
         driver.get("http://localhost:9999");
@@ -42,7 +46,8 @@ public class orderingCardValidationsTest {
         driver.findElement(By.className("button__text")).click();
         String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
         String actual = driver.findElement(By.tagName("p")).getText().trim();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
+
 }
 
