@@ -30,12 +30,10 @@ public class OrderingCardValidationsTest {
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
     }
-
     @BeforeEach
-    void setUp() {
+    void setup() {
         driver = new ChromeDriver();
     }
-
     @AfterEach
     void tearDown() {
         driver.quit();
