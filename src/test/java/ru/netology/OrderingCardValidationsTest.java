@@ -23,16 +23,11 @@ public class OrderingCardValidationsTest {
     @BeforeAll
     static void setUpAll() {
 // убедитесь, что файл chromedriver.exe расположен именно в каталоге C:\tmp
-        System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
-    }
-    @BeforeEach
-    void setup() {
-        driver = new ChromeDriver();
     }
     @AfterEach
     void tearDown() {
@@ -115,7 +110,7 @@ public class OrderingCardValidationsTest {
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+78956231122");
         driver.findElement(By.className("button__text")).click();
         String expected = "Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй";
-        String actual = driver.findElement(By.cssSelector("[data-test-id='agreement']")).getText().trim();
+        String actual = driver.findElement(By.cssSelector("[data-test-id='agreement'].input_invalid")).getText().trim();
         assertEquals(expected, actual);
     }
 
